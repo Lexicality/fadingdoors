@@ -181,12 +181,12 @@ function SetupDoor(owner, ent, data)
 	if (not (IsValid(owner) and IsValid(ent))) then return; end
 	if (IsFading(ent)) then
 		Unfade(ent);
-		onRemove(ent); -- Kill the old numpad funx
+		onRemove(ent); -- Kill the old numpad func
 	else
 		CreateDoorFunctions(ent);
 	end
-	ent._fade.numpadUp = numpad.OnUp(  ply, data.key, "Fading Doors onUp", ent);
-	ent._fade.numpadDn = numpad.OnDown(ply, data.key, "Fading Doors onDown", ent);
+	ent._fade.numpadUp = numpad.OnUp(owner, data.key, "Fading Doors onUp", ent);
+	ent._fade.numpadDn = numpad.OnDown(owner, data.key, "Fading Doors onDown", ent);
 	ent._fade.toggle   = data.toggle;
 	if (data.reversed) then
 		Fade(ent);
